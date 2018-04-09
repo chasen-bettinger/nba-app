@@ -48,3 +48,36 @@ p {
   display: flex;
   align-items: center;
 }
+
+/* Nav */
+
+.nav-item {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid grey;
+}
+
+.nav-items a {
+  text-decoration: none;
+}
+
+.nav-item p {
+  margin-left: 10px;
+}
+
+/* Footer */
+
+.footer {
+  background: #242424;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer p {
+  color: #FFF;
+  text-transform: uppercase;
+}

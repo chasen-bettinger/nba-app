@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import FontAwesome from "react-fontawesome";
 
-import NavSideBar from "./side-nav/NavSideBar";
+import NavSideBar from "../side-nav/NavSideBar";
 
 const Header = props => {
   const loadImage = () => (
