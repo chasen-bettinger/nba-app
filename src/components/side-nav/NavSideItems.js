@@ -29,7 +29,7 @@ const NavSideItems = () => {
   const createItems = () => {
     return items.map((item, i) => {
       return (
-        <Link to={item.link}>
+        <Link key={i} to={item.link}>
           <div className="nav-item">
             <FontAwesome name={item.icon} />
             <p>{item.text}</p>
