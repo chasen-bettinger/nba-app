@@ -1,0 +1,50 @@
+* {
+  vertical-align: baseline;
+  font-style: normal;
+  border: 0 none;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background: transparent;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  font-family: "Alegreya Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Alegreya", serif;
+}
+
+p {
+  font-family: "Alegreya Sans", sans-serif;
+}
+
+.header {
+  background: #242424;
+
+  padding: 10px 10px;
+}
+
+.header-logo {
+  cursor: default;
+  margin-left: 20px;
+}
+
+.menu-bars {
+  cursor: pointer;
+  color: #fff;
+  z-index: 20;
+}
+
+.header-items {
+  display: flex;
+  align-items: center;
+}
