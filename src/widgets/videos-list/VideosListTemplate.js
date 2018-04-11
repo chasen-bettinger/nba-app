@@ -5,7 +5,6 @@ import CardInfo from "../card/card-info/CardInfo";
 function VideosListTemplate(props) {
   const renderVideoCard = () => {
     return props.data.map((video, i) => {
-      console.log(video);
       return (
         <div className="video-card" key={i}>
           <div

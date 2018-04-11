@@ -3,13 +3,15 @@ import { Route, Switch } from "react-router-dom";
 
 import Home from "../pages/Home";
 import Layout from "../hoc/Layout";
+import NewsArticles from "../pages/articles/news/NewsArticles";
 
 class Routes extends Component {
   render() {
     return (
       <Layout>
         <Switch>
-          <Route path="/" component={Home} />;
+          <Route path="/articles/:id" exact component={NewsArticles} />
+          <Route path="/" exact component={Home} />;
         </Switch>
       </Layout>
     );

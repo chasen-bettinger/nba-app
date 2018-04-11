@@ -220,3 +220,74 @@ strong {
   background-repeat: no-repeat;
   background-image: url("/images/play.png");
 }
+
+/* Article */
+
+.team-logo {
+  height: auto;
+  width: 50px;
+  background-size: contain;
+  background-position: center;
+  margin-right: 20px;
+}
+
+.team-info-wrapper {
+  display: flex;
+  margin: 8px;
+  margin-bottom: 0;
+  padding: 5px;
+  border: 1px solid #c5c5c5;
+  background-color: #fcfefc;
+}
+
+.team-copy-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.author-info-wrapper {
+  display: flex;
+  margin: 8px;
+  margin-top: 0;
+  padding: 5px;
+  border-top: none;
+  border: 1px solid #c5c5c5;
+  background-color: #fcfefc;
+}
+
+.article-author {
+  margin-right: 10px;
+}
+
+.article-date {
+  font-size: 14px;
+}
+
+.article-body-image {
+  height: 150px;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.article-body-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 8px;
+  margin-top: 0;
+  padding: 5px;
+  border-top: none;
+  border: 1px solid #c5c5c5;
+  background-color: #fcfefc;
+}
+
+.article-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.article-copy {
+  font-size: 14px;
+  margin-top: 10px;
+}
