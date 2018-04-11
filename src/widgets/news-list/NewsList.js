@@ -66,6 +66,41 @@ class NewsList extends Component {
           );
         });
         break;
+      case "card-img":
+        template = this.state.items.map((item, i) => {
+          console.log(item);
+
+          return (
+            <CSSTransition
+              classNames={{
+                enter: "news-list-wrapper",
+                enterActive: "news-list-wrapper-enter"
+              }}
+              timeout={500}
+              key={i}
+            >
+              <div class="card-image-wrapper">
+                <div
+                  className="card-image"
+                  style={{
+                    backgroundImage: `URL(../images/articles/${item.image})`
+                  }}
+                />
+                <div className="card-copy">
+                  <Link to={`/articles/${item.id}`}>
+                    <CardInfo
+                      teams={this.state.teams}
+                      team={item.team}
+                      date={item.date}
+                    />
+                    <h2>{item.title}</h2>
+                  </Link>
+                </div>
+              </div>
+            </CSSTransition>
+          );
+        });
+        break;
       default:
         template = null;
     }

@@ -2,8 +2,6 @@ import React from "react";
 
 const ArticleBody = props => {
   const renderBody = () => {
-    console.log(props);
-
     return props ? (
       <div className="article-body-wrapper">
         <h1 className="article-title">{props.article.title}</h1>
