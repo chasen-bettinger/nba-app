@@ -12,9 +12,20 @@ const Button = props => {
     );
   };
 
+  const renderLinkTo = () => {
+    return (
+      <Link to={props.linkTo} className="load-more-btn">
+        {props.cta}
+      </Link>
+    );
+  };
+
   switch (props.type) {
     case "loadmore":
       template = renderLoadMore();
+      break;
+    case "linkto":
+      template = renderLinkTo();
       break;
     default:
       template = null;

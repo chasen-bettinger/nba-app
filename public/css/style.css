@@ -27,6 +27,10 @@ p {
   font-family: "Alegreya Sans", sans-serif;
 }
 
+strong {
+  font-weight: bold;
+}
+
 .header {
   background: #242424;
 
@@ -117,24 +121,6 @@ p {
 
 /* News */
 
-.news-item {
-  border: 1px solid #f2f2f2;
-  background: #fff;
-  margin-top: 0;
-  padding: 8px 5px 0 5px;
-}
-
-.news-item h2 {
-  font-size: 13px;
-  line-height: 21px;
-  margin: 5px 0;
-  color: #525252;
-}
-
-.news-item a {
-  text-decoration: none;
-}
-
 .news-list-wrapper {
   opacity: 0;
   transform: translateX(-100%);
@@ -157,6 +143,8 @@ p {
   padding: 9px;
   cursor: pointer;
   font-size: 15px;
+  text-decoration: none;
+  display: block;
 }
 
 /* Card */
@@ -181,6 +169,23 @@ p {
   color: #2196f3;
 }
 
+.card-copy {
+  background: #fff;
+  margin-top: 0;
+  padding: 8px 5px 0 5px;
+}
+
+.card-copy h2 {
+  font-size: 13px;
+  line-height: 21px;
+  margin: 5px 0;
+  color: #525252;
+}
+
+.card-copy a {
+  text-decoration: none;
+}
+
 /* Videos */
 
 .videos-list-title {
@@ -189,4 +194,29 @@ p {
   color: #353535;
   font-weight: 300;
   font-size: 21px;
+}
+
+.video-card {
+  display: flex;
+  margin-bottom: 10px;
+  border: 1px solid #f2f2f2;
+  border-left: none;
+}
+
+.video-image {
+  height: 75px;
+  width: 75px;
+  min-width: 75px;
+  background-size: cover;
+  margin-right: 10px;
+  display: block;
+}
+
+.video-icon {
+  height: 100%;
+  width: 100%;
+  background-size: 40px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-image: url("/images/play.png");
 }

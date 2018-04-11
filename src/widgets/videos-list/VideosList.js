@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { URL } from "../../config";
 import Button from "../buttons/Button";
+import VideosListTemplate from "./VideosListTemplate";
 
 class VideoList extends Component {
   state = {
@@ -12,17 +13,82 @@ class VideoList extends Component {
     amount: this.props.amount
   };
 
+  componentWillMount() {
+    this.request(this.state.start, this.state.end);
+  }
+
+  request = (start, end) => {
+    if (this.state.teams.length < 1) {
+      axios.get(`${URL}/teams`).then(response => {
+        this.setState({
+          teams: response.data
+        });
+      });
+    }
+
+    axios.get(`${URL}/videos?_start=${start}&_end=${end}`).then(response => {
+      this.setState({
+        videos: [...this.state.videos, ...response.data],
+        start,
+        end
+      });
+    });
+  };
+
   renderTitle = () => {
-    if (this.props.title)
+    if (this.props.title) {
       return (
         <h2 className="videos-list-title">
           <strong>NBA</strong> Videos
         </h2>
       );
+    } else return null;
+  };
+
+  renderButton = () => {
+    return this.props.loadmore ? (
+      <Button
+        type="loadmore"
+        loadmore={() => this.loadMore()}
+        cta="Load More Videos"
+      />
+    ) : (
+      <Button cta="More Videos" type="linkto" linkTo="/videos" />
+    );
+  };
+
+  renderVideos = () => {
+    let template = null;
+
+    switch (this.props.type) {
+      case "card":
+        template = (
+          <VideosListTemplate
+            data={this.state.videos}
+            teams={this.state.teams}
+          />
+        );
+        break;
+      default:
+        template = null;
+    }
+
+    return template;
+  };
+
+  loadMore = () => {
+    let end = this.state.end + this.state.amount;
+    this.request(this.state.end, end);
   };
 
   render() {
-    return <div className="videos-list-wrapper">{this.renderTitle()}</div>;
+    return (
+      <div className="videos-list-wrapper">
+        {this.renderTitle()}
+        {this.renderVideos()}
+        {this.renderButton()}
+      </div>
+    );
   }
 }
 

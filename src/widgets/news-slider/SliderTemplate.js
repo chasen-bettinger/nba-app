@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const SliderTemplate = props => {
   let template = null;
   const settings = {
+    autoplay: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
