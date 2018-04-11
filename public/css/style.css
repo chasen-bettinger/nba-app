@@ -134,3 +134,59 @@ p {
 .news-item a {
   text-decoration: none;
 }
+
+.news-list-wrapper {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 0.5s ease-in;
+}
+
+.news-list-wrapper-enter {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+/* Button */
+
+.load-more-btn {
+  text-align: center;
+  background: #2196f3;
+  border-bottom: 1px solid #d7d7d7;
+  font-weight: 500;
+  color: #eeeeee;
+  padding: 9px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+/* Card */
+
+.card-info {
+  font-size: 11px;
+}
+
+.card-team {
+  margin-right: 7px;
+  background: #d1d1d1;
+  color: #fff;
+  padding: 2px 5px;
+}
+
+.card-date-icon {
+  margin-right: 5px;
+  color: #2196f3;
+}
+
+.card-date {
+  color: #2196f3;
+}
+
+/* Videos */
+
+.videos-list-title {
+  text-align: center;
+  margin: 20px;
+  color: #353535;
+  font-weight: 300;
+  font-size: 21px;
+}
