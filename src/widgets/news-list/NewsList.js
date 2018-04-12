@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { URL } from "../../config";
 import Button from "../buttons/Button";
 import CardInfo from "../card/card-info/CardInfo";
+import {
+  firebaseTeams,
+  firebaseArticles,
+  firebaseLooper
+} from "../../firebase";
 
 class NewsList extends Component {
   state = {
@@ -20,21 +23,31 @@ class NewsList extends Component {
   }
 
   request = (start, end) => {
-    if (this.state.teams < 1) {
-      axios.get(`${URL}/teams`).then(response => {
+    if (this.state.teams.length < 1) {
+      firebaseTeams.once("value").then(snap => {
+        const teams = firebaseLooper(snap);
         this.setState({
-          teams: response.data
+          teams
         });
       });
     }
 
-    axios.get(`${URL}/articles?_start=${start}&_end=${end}`).then(response => {
-      this.setState({
-        items: [...this.state.items, ...response.data],
-        start,
-        end
+    firebaseArticles
+      .orderByChild("id")
+      .startAt(start)
+      .endAt(end)
+      .once("value")
+      .then(snap => {
+        const articles = firebaseLooper(snap);
+        this.setState({
+          items: [...this.state.items, ...articles],
+          start,
+          end
+        });
+      })
+      .catch(e => {
+        console.log(e);
       });
-    });
   };
 
   renderNews = type => {
@@ -68,8 +81,6 @@ class NewsList extends Component {
         break;
       case "card-img":
         template = this.state.items.map((item, i) => {
-          console.log(item);
-
           return (
             <CSSTransition
               classNames={{
@@ -110,7 +121,7 @@ class NewsList extends Component {
 
   loadMore = () => {
     let end = this.state.end + this.state.amount;
-    this.request(this.state.end, end);
+    this.request(this.state.end + 1, end);
   };
 
   render() {

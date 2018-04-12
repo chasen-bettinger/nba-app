@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import axios from "axios";
 import SliderTemplate from "./SliderTemplate";
-import { URL } from "../../config";
+import { firebaseArticles, firebaseLooper } from "../../firebase";
 
 class NewsSlider extends Component {
   state = {
@@ -9,13 +8,21 @@ class NewsSlider extends Component {
   };
 
   componentWillMount() {
-    axios
-      .get(`${URL}/articles?_start=${this.props.start}&_end=${this.props.end}`)
-      .then(response => {
-        this.setState({
-          news: response.data
-        });
+    firebaseArticles
+      .limitToFirst(3)
+      .once("value")
+      .then(snap => {
+        const news = firebaseLooper(snap);
+        this.setState({ news });
       });
+
+    // axios
+    //   .get(`${URL}/articles?_start=${this.props.start}&_end=${this.props.end}`)
+    //   .then(response => {
+    //     this.setState({
+    //       news: response.data
+    //     });
+    //   });
   }
 
   render() {
