@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { URL } from "../../../config";
-import axios from "axios";
+import { firebaseDB, firebaseLooper, firebaseTeams } from "../../../firebase";
 import ArticleHeader from "../ArticleHeader";
 import ArticleBody from "../ArticleBody";
 
@@ -15,17 +14,23 @@ class NewsArticles extends Component {
   }
 
   request = () => {
-    axios
-      .get(`${URL}/articles?id=${this.props.match.params.id}`)
-      .then(response => {
-        let article = response.data[0];
+    firebaseDB
+      .ref(`articles/${this.props.match.params.id}`)
+      .once("value")
+      .then(snap => {
+        const article = snap.val();
 
-        axios.get(`${URL}/teams/?id=${article.team}`).then(response => {
-          this.setState({
-            article,
-            team: response.data
+        firebaseTeams
+          .orderByChild("teamId")
+          .equalTo(article.team)
+          .once("value")
+          .then(snap => {
+            const team = firebaseLooper(snap);
+            this.setState({
+              article,
+              team
+            });
           });
-        });
       });
   };
 

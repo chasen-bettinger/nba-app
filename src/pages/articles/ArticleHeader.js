@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 
 const ArticleHeader = props => {
   const renderTeamInfo = team => {
@@ -21,11 +22,15 @@ const ArticleHeader = props => {
     ) : null;
   };
 
+  const formatDate = date => {
+    return moment(date).format(" MM-DD-YYYY");
+  };
+
   const renderAuthorInfo = (author, date) => {
     return author && date ? (
       <div className="author-info-wrapper">
         <h5 className="article-author">{author}</h5>
-        <p className="article-date">{date}</p>
+        <p className="article-date">{formatDate(date)}</p>
       </div>
     ) : null;
   };

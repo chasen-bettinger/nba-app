@@ -2,7 +2,7 @@ import React from "react";
 
 const VideoWrapper = props => {
   const renderVideoInfo = () => {
-    return props.video.id ? (
+    return props ? (
       <div className="video-wrapper">
         <h1 className="article-title">{props.video.title}</h1>
         <iframe

@@ -20,4 +20,11 @@ const firebaseLooper = snap => {
   return data;
 };
 
-export { firebaseArticles, firebaseVideos, firebaseTeams, firebaseLooper };
+export {
+  firebase,
+  firebaseArticles,
+  firebaseVideos,
+  firebaseTeams,
+  firebaseLooper,
+  firebaseDB
+};

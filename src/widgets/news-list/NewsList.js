@@ -90,7 +90,7 @@ class NewsList extends Component {
               timeout={500}
               key={i}
             >
-              <div class="card-image-wrapper">
+              <div className="card-image-wrapper">
                 <div
                   className="card-image"
                   style={{
