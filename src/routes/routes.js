@@ -8,11 +8,13 @@ import VideosArticles from "../pages/articles/videos/VideosArticles";
 import News from "../pages/articles/news/News";
 import Videos from "../pages/articles/videos/Videos";
 import SignIn from "../components/signin/SignIn";
+import Dashboard from "../pages/dashboard/Dashboard";
 
 const Routes = props => {
   return (
     <Layout user={props.user}>
       <Switch>
+        <Route path="/dashboard" exact component={Dashboard} />
         <Route path="/sign-in" exact component={SignIn} />
         <Route path="/news" exact component={News} />
         <Route path="/video" exact component={Videos} />
